@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	xmlns:mec="http://webnus.net/rss/mec/"
+    xmlns:media="http://search.yahoo.com/mrss/"
+	    >
+<channel>
+	<title>特殊活動 &#8211; 美濃湖水雉復育工作站</title>
+	<atom:link href="./index.html" rel="self" type="application/rss+xml" />
+	<link>./../../../index.html</link>
+	<description>高雄鳥會—替凌波仙子多撐把傘</description>
+	<lastBuildDate>Mon, 24 Jan 2022 11:42:19 +0800</lastBuildDate>
+	<language>zh-TW</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.8.3</generator>
+    
+            <item>
+		<title>2022望年會‧美濃湖水雉園區走春/賞鳥/聯誼會</title>
+		<link>./../../../events/spring-event-20220212/index.html</link>
+        
+        
+        <pubDate></pubDate>
+		<dc:creator><![CDATA[]]></dc:creator>
+
+		<guid isPermaLink="false">./../../../index.html?post_type=mec-events&#038;p=269</guid>
+
+        <description><![CDATA[<img width="720" height="800" src="./../../../wp-content/uploads/2022/01/活動封面-02-e1643011505547.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" loading="lazy" /> 日期：111年2月12日(六) 08:00-16:00 對象：限高雄鳥會會員及眷屬 費用： 300元/人(含車 [&hellip;]]]></description>
+
+                <content:encoded><![CDATA[<p><img loading="lazy" class="alignnone wp-image-57" src="./../../../wp-content/uploads/2022/01/美濃湖水雉_走春08.jpg" alt="" width="320" height="453" /></p>
+<p>日期：111年2月12日(六) 08:00-16:00</p>
+<p>對象：限高雄鳥會會員及眷屬</p>
+<p>費用：</p>
+<p>300元/人(含車資、保險、午餐)</p>
+<p>150元/人(自行開車者酌收餐費，保險請自理)</p>
+<p>報名網址：<a href="https://www.beclass.com/rid=254660961b1b48c5bee8">https://www.beclass.com/rid=254660961b1b48c5bee8</a></p>
+<p>&nbsp;</p>
+<p>行程：</p>
+<p>08：00-10：00 美濃湖周遭賞鳥</p>
+<p>10：30-11：30 水雉復育園區導覽介紹</p>
+<p>11：30-13：30 園區午餐(自助式)</p>
+<p>14：00-16：00 黃蝶翠谷生態觀察</p>
+<p>16：00     返回溫暖的家</p>
+]]></content:encoded>
+        
+        
+        
+        <mec:startDate>2022-02-12</mec:startDate>
+                <mec:startHour>am 8:00</mec:startHour>
+        
+        <mec:endDate>2022-02-12</mec:endDate>
+                <mec:endHour>pm 4:00</mec:endHour>
+        
+                <mec:location></mec:location>
+        
+                <mec:cost>TWD300.00</mec:cost>
+        
+                <mec:category>特殊活動</mec:category>
+        
+                        	</item>
+    
+</channel>
+</rss>
