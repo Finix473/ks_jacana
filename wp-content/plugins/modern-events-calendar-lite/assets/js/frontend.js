@@ -331,10 +331,10 @@ var mec_search_callback2;
             var $label = $("#mec_sf_label_" + settings.id);
 
             if ($category.length && $category.prop('tagName') && $category.prop('tagName').toLowerCase() === 'div') {
-                $category.find($('select')).each(function () {
+                $category.find('select').each(function () {
                     $(this).val(null).trigger('change');
                 });
-                $category.find($('select')).select2();
+                $category.find('select').select2();
             }
             else if ($category.length) {
 
@@ -364,6 +364,9 @@ var mec_search_callback2;
                 if( $("#mec_sf_"+ field +"_" + settings.id).length ){
 
                     $("#mec_sf_"+ field +"_" + settings.id).val(null);
+                    if( $("#mec_sf_"+ field +"_" + settings.id).is('select') ){
+                        jQuery("#mec_sf_"+ field +"_" + settings.id).niceSelect('update');
+                    }
                 }
             });
 
@@ -474,7 +477,11 @@ jQuery(document).ready(function ($) {
         jQuery('#mec-gCalendar-wrap .openMonthFilter').removeClass('open');
     });
 
+});
 
+jQuery(window).on('load', function()
+{
+    jQuery(".single-mec-events").find(".mejs-controls button").addClass("mejs")
 });
 
 // MEC FULL CALENDAR PLUGIN
@@ -4848,6 +4855,8 @@ function mecFluentYearlyUI(eventID, yearID) {
                     $('.mec-modal-result').removeClass("mec-month-navigator-loading");
 
                     mecFluentCustomScrollbar();
+
+                    $(document).trigger('mec_search_process_end', {r:response, settings_id: settings.id});
                 },
                 error: function () { }
             });
@@ -4919,6 +4928,8 @@ function mecFluentYearlyUI(eventID, yearID) {
                         }
 
                         jQuery('.mec-fluent-wrap').find('.mec-filter-content').find('select').niceSelect();
+
+                        $(document).trigger('mec_set_month_process_end', {r:response, settings_id: settings.id});
                     },
                     error: function () { }
                 });
