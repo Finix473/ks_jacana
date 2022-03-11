@@ -8,7 +8,7 @@
 	>
 
 <channel>
-	<title>棲地記事 &#8211; 美濃湖水雉復育工作站</title>
+	<title>棲地記事 &#8211; 美濃湖水雉棲地</title>
 	<atom:link href="./index.html" rel="self" type="application/rss+xml" />
 	<link>./../../../index.html</link>
 	<description>高雄鳥會—替凌波仙子多撐把傘</description>
@@ -18,7 +18,7 @@
 	hourly	</sy:updatePeriod>
 	<sy:updateFrequency>
 	1	</sy:updateFrequency>
-	<generator>https://wordpress.org/?v=5.9</generator>
+	<generator>https://wordpress.org/?v=5.9.2</generator>
 	<item>
 		<title>棲地記事—2022.01.20-2</title>
 		<link>./../../../2022/01/25/blog-post20220120-2/index.html</link>

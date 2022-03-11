@@ -301,18 +301,17 @@ var mec_search_callback2;
             var sf = 'sf[s]=' + s + '&sf[address]=' + address + '&sf[cost-min]=' + cost_min + '&sf[cost-max]=' + cost_max + '&sf[time-start]=' + time_start + '&sf[time-end]=' + time_end + '&sf[month]=' + month + '&sf[year]=' + year + '&sf[start]=' + start + '&sf[end]=' + end + '&sf[category]=' + category + '&sf[location]=' + location + '&sf[organizer]=' + organizer + '&sf[speaker]=' + speaker + '&sf[tag]=' + tag + '&sf[label]=' + label + '&sf[event_type]=' + event_type + '&sf[event_type_2]=' + event_type_2 + '&sf[attribute]=' + attribute + addation_attr;
 
             var fields = get_fields();
-            $.each(fields,function(i,field){
-
-                if( $("#mec_sf_"+ field +"_" + settings.id).length ){
-
+            $.each(fields, function(i, field)
+            {
+                if($("#mec_sf_"+ field +"_" + settings.id).length)
+                {
                     v = $("#mec_sf_"+ field +"_" + settings.id).val();
                     sf += '&sf['+ field +']=' + v;
                 }
             });
 
-
             // Refine Parameters
-            if (settings.refine) refine(sf);
+            if(settings.refine) refine(sf);
 
             // Attributes
             var atts = settings.atts + '&' + sf;
@@ -339,7 +338,7 @@ var mec_search_callback2;
             else if ($category.length) {
 
                 $category.val(null);
-                jQuery('.mec-fluent-wrap').find('.mec-filter-content').find('select').niceSelect('update');
+                if(jQuery().niceSelect) jQuery('.mec-fluent-wrap').find('.mec-filter-content').find('select').niceSelect('update');
             }
 
             if ($location.length) $location.val(null);
@@ -359,12 +358,13 @@ var mec_search_callback2;
             if ($time_end.length) $time_end.val(null);
 
             var fields = get_fields();
-            $.each(fields,function(i,field){
-
-                if( $("#mec_sf_"+ field +"_" + settings.id).length ){
-
+            $.each(fields,function(i,field)
+            {
+                if($("#mec_sf_"+ field +"_" + settings.id).length)
+                {
                     $("#mec_sf_"+ field +"_" + settings.id).val(null);
-                    if( $("#mec_sf_"+ field +"_" + settings.id).is('select') ){
+                    if($("#mec_sf_"+ field +"_" + settings.id).is('select') && jQuery().niceSelect)
+                    {
                         jQuery("#mec_sf_"+ field +"_" + settings.id).niceSelect('update');
                     }
                 }
@@ -389,57 +389,57 @@ var mec_search_callback2;
             else if ($category.length) category_type = 'dropdown';
 
             $.ajax(
-                {
-                    url: settings.ajax_url,
-                    data: "action=mec_refine_search_items&" + sf + '&last_field=' + last_field + '&category_type=' + category_type + '&id=' + settings.id,
-                    dataType: "json",
-                    type: "post",
-                    success: function (response) {
-                        // Categories
-                        if (typeof response.categories !== 'undefined' && response.categories !== '') {
-                            // Checkboxes
-                            if ($category.length && $category.prop('tagName') && $category.prop('tagName').toLowerCase() === 'div') {
-                                $category.html(response.categories);
-                            }
-                            // Dropdown
-                            else if ($category.length) {
-                                $category.replaceWith(response.categories)
-                            }
-
-                            // Categories Search bar
-                            if ( jQuery(".mec-searchbar-category-wrap select").length > 0 ) jQuery(".mec-searchbar-category-wrap select").niceSelect();
+            {
+                url: settings.ajax_url,
+                data: "action=mec_refine_search_items&" + sf + '&last_field=' + last_field + '&category_type=' + category_type + '&id=' + settings.id,
+                dataType: "json",
+                type: "post",
+                success: function (response) {
+                    // Categories
+                    if (typeof response.categories !== 'undefined' && response.categories !== '') {
+                        // Checkboxes
+                        if ($category.length && $category.prop('tagName') && $category.prop('tagName').toLowerCase() === 'div') {
+                            $category.html(response.categories);
+                        }
+                        // Dropdown
+                        else if ($category.length) {
+                            $category.replaceWith(response.categories)
                         }
 
-                        // Locations
-                        if (typeof response.locations !== 'undefined' && response.locations !== '') {
-                            $location.replaceWith(response.locations)
-                        }
+                        // Categories Search bar
+                        if ( jQuery(".mec-searchbar-category-wrap select").length > 0 && jQuery().niceSelect) jQuery(".mec-searchbar-category-wrap select").niceSelect();
+                    }
 
-                        // Organizers
-                        if (typeof response.organizers !== 'undefined' && response.organizers !== '') {
-                            $organizer.replaceWith(response.organizers)
-                        }
+                    // Locations
+                    if (typeof response.locations !== 'undefined' && response.locations !== '') {
+                        $location.replaceWith(response.locations)
+                    }
 
-                        // Speakers
-                        if (typeof response.speakers !== 'undefined' && response.speakers !== '') {
-                            $speaker.replaceWith(response.speakers)
-                        }
+                    // Organizers
+                    if (typeof response.organizers !== 'undefined' && response.organizers !== '') {
+                        $organizer.replaceWith(response.organizers)
+                    }
 
-                        // Labels
-                        if (typeof response.labels !== 'undefined' && response.labels !== '') {
-                            $label.replaceWith(response.labels)
-                        }
+                    // Speakers
+                    if (typeof response.speakers !== 'undefined' && response.speakers !== '') {
+                        $speaker.replaceWith(response.speakers)
+                    }
 
-                        // Tags
-                        if (typeof response.tags !== 'undefined' && response.tags !== '') {
-                            $tag.replaceWith(response.tags)
-                        }
+                    // Labels
+                    if (typeof response.labels !== 'undefined' && response.labels !== '') {
+                        $label.replaceWith(response.labels)
+                    }
 
-                        // Trigger
-                        trigger();
-                    },
-                    error: function () { }
-                });
+                    // Tags
+                    if (typeof response.tags !== 'undefined' && response.tags !== '') {
+                        $tag.replaceWith(response.tags)
+                    }
+
+                    // Trigger
+                    trigger();
+                },
+                error: function () { }
+            });
         }
     };
 }(jQuery));
@@ -571,6 +571,12 @@ jQuery(window).on('load', function()
             // Add Loading Class
             if (jQuery('.mec-modal-result').length === 0) jQuery('.mec-wrap').append('<div class="mec-modal-result"></div>');
             jQuery('.mec-modal-result').addClass('mec-month-navigator-loading');
+
+            // Add Month & Year
+            if(settings.atts.indexOf('sf[month]') <= -1)
+            {
+                settings.atts += '&sf[month]='+$("#mec_sf_month_" + settings.id).val()+'&sf[year]='+$("#mec_sf_year_" + settings.id).val();
+            }
 
             $.ajax({
                 url: settings.ajax_url,
@@ -897,6 +903,7 @@ jQuery(window).on('load', function()
             id: 0,
             atts: '',
             ajax_url: '',
+            sf: {},
         }, options);
 
         // Set onclick Listeners
@@ -988,20 +995,23 @@ jQuery(window).on('load', function()
             });
         }
 
-        function search(year, month) {
-            // Add Loading Class
-            if (jQuery('.mec-modal-result').length === 0) jQuery('.mec-wrap').append('<div class="mec-modal-result"></div>');
-            jQuery('.mec-modal-result').addClass('mec-month-navigator-loading');
+        function search(year, month)
+        {
+            // Modal
+            var $modal = jQuery('.mec-modal-result');
 
-            $.ajax({
+            // Add Loading Class
+            if($modal.length === 0) jQuery('.mec-wrap').append('<div class="mec-modal-result"></div>');
+            $modal.addClass('mec-month-navigator-loading');
+
+            $.ajax(
+            {
                 url: settings.ajax_url,
                 data: "action=mec_monthly_view_load_month&mec_year=" + year + "&mec_month=" + month + "&" + settings.atts + "&apply_sf_date=1",
                 dataType: "json",
                 type: "post",
-                success: function (response) {
-                    active_month = response.current_month.month;
-                    active_year = response.current_month.year;
-
+                success: function (response)
+                {
                     // Append Month
                     $("#mec_skin_events_" + settings.id).html('<div class="mec-month-container" id="mec_monthly_view_month_' + settings.id + '_' + response.current_month.id + '" data-month-id="' + response.current_month.id + '">' + response.month + '</div>');
 
@@ -1041,7 +1051,12 @@ jQuery(window).on('load', function()
             }
 
             // Month exists so we just show it
-            if ($("#mec_monthly_view_month_" + settings.id + "_" + month_id).length) {
+            if ($("#mec_monthly_view_month_" + settings.id + "_" + month_id).length)
+            {
+                // Set Month Filter values in search widget
+                $("#mec_sf_month_" + settings.id).val(month);
+                $("#mec_sf_year_" + settings.id).val(year);
+
                 // Toggle Month
                 toggleMonth(month_id);
             } else {
@@ -1079,7 +1094,6 @@ jQuery(window).on('load', function()
 
                             // Remove loading Class
                             $('.mec-modal-result').removeClass("mec-month-navigator-loading");
-
 
                             // Set Month Filter values in search widget
                             $("#mec_sf_month_" + settings.id).val(month);
@@ -1442,7 +1456,12 @@ jQuery(window).on('load', function()
             navigation_click = navigation_click || false;
 
             // Month exists so we just show it
-            if ($("#mec_weekly_view_month_" + settings.id + "_" + month_id).length) {
+            if ($("#mec_weekly_view_month_" + settings.id + "_" + month_id).length)
+            {
+                // Set Month Filter values in search widget
+                $("#mec_sf_month_" + settings.id).val(month);
+                $("#mec_sf_year_" + settings.id).val(year);
+
                 // Toggle Month
                 toggleMonth(month_id);
 
@@ -1738,7 +1757,12 @@ jQuery(window).on('load', function()
             navigation_click = navigation_click || false;
 
             // Month exists so we just show it
-            if ($("#mec_daily_view_month_" + settings.id + "_" + month_id).length) {
+            if ($("#mec_daily_view_month_" + settings.id + "_" + month_id).length)
+            {
+                // Set Month Filter values in search widget
+                $("#mec_sf_month_" + settings.id).val(month);
+                $("#mec_sf_year_" + settings.id).val(year);
+
                 // Toggle Month
                 toggleMonth(month_id);
 
@@ -4927,7 +4951,7 @@ function mecFluentYearlyUI(eventID, yearID) {
                             mecFluentCustomScrollbar(0);
                         }
 
-                        jQuery('.mec-fluent-wrap').find('.mec-filter-content').find('select').niceSelect();
+                        if(jQuery().niceSelect) jQuery('.mec-fluent-wrap').find('.mec-filter-content').find('select').niceSelect();
 
                         $(document).trigger('mec_set_month_process_end', {r:response, settings_id: settings.id});
                     },
